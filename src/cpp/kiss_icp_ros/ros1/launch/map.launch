@@ -11,7 +11,7 @@
   <arg name="deskew" default="false"/>
   <arg name="max_range" default="100.0" />
   <arg name="min_range" default="0" />
-  <arg name="voxel_size" default="0.3" />
+  <arg name="voxel_size" default="0.5" />
 
   <!-- Odometry node -->
   <node pkg="kiss_icp" type="odometry_node" name="odometry_node" output="screen">
@@ -25,7 +25,7 @@
     <param name="deskew" value="$(arg deskew)"/>
     <param name="voxel_size" value="$(arg voxel_size)"/>
     <param name="frame_rate" value="10.0"/>
-    <param name="max_points_per_voxel" value="100"/>
+    <param name="max_points_per_voxel" value="30"/>
     <param name="initial_threshold" value="2.0"/>
     <param name="min_motion_th" value="0.1" />
   </node>
@@ -37,7 +37,7 @@
 
   <!-- Visualizer -->
   <group if="$(arg visualize)">
-    <node pkg="rviz" type="rviz" name="rviz_odometry" args="-d $(find kiss_icp)/src/cpp/kiss_icp_ros/ros1/rviz/kiss_icp.rviz"/>
+    <node pkg="rviz" type="rviz" name="rviz_map" args="-d $(find kiss_icp)/src/cpp/kiss_icp_ros/ros1/rviz/kiss_icp_map.rviz"/>
   </group>
 
 </launch>
